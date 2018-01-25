@@ -9,11 +9,11 @@ import {styles} from './styles'
 class AuthComponent extends Component {
   render() {
     return (
-      <div className='flex-row' style={{marginTop: 20}}>
+      <div className='flex-row' style={{marginTop: 12+"%" }}>
         <Paper zDepth={2} style={styles.paper}>
           <div className='flex-col'>
-        	<h1 style={{marginTop: 0}}>Login</h1>
-		    
+        	<h1 style={{marginTop: 0,fontFamily:'Raleway'}}>Login</h1>
+
 		    <div style={{width: '120%'}}>
 			    <a class="btn btn-block btn-social btn-google" style={{margin: '20px 0px'}}>
 	              <span class="fa fa-google"></span>Login via Gmail
