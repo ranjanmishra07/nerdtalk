@@ -3,12 +3,12 @@ var GitHubStrategy = require('passport-github2').Strategy;
 
 var User = require('../models/user');
 var init = require('./init');
-
+var config = require('../config');
 
 passport.use(new GitHubStrategy({
-    clientID: 'b531e27ee51666c46ada',
-     clientSecret: '4c0430897fc6b6a82ae288e2dc315225822c7180',
-     callbackURL: 'http://127.0.0.1:3000/auth/github/callback'
+  clientID: config.github.clientID,
+  clientSecret: config.github.clientSecret,
+  callbackURL: config.github.callbackURL
   },
   function(accessToken, refreshToken, profile, done) {
 

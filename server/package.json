@@ -2,9 +2,9 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-<<<<<<< HEAD
   "main": "index.js",
   "scripts": {
+    "start":"node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -18,23 +18,9 @@
     "passport-github": "^1.1.0",
     "passport-github2": "^0.1.11",
     "passport-google-oauth": "^1.0.0"
-=======
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "bcrypt-nodejs": "0.0.3",
-    "express": "^4.16.2",
-    "passport": "^0.4.0",
-    "passport-github": "^1.1.0",
-    "passport-google-auth": "^1.0.2"
+
   },
   "devDependencies": {
     "nodemon": "^1.14.11"
->>>>>>> 3f96e7b22707f95c32bbcc6871dc1d1154f96f51
   }
 }
