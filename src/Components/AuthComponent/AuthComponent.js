@@ -26,6 +26,13 @@ class AuthComponent extends Component {
       })
     }
 
+    componentWillMount() {
+      firebaseAuth.onAuthStateChanged(function(user) {
+        if(user)
+          hashHistory.push('/home')  
+      })
+    }
+
   render() {
     return (
       <div className='flex-row' style={{marginTop: 12+"%" }}>
