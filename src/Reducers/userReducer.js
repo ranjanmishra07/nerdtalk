@@ -9,12 +9,13 @@ export function userReducer(state=initialState, action) {
 		case "SUCCESS_LOGIN":
 			return Object.assign({}, state, {
 				logging: false,
-				user: action.result
+				user: action.user
 			})
 		case "FAILURE_LOGIN":
 			return Object.assign({}, state, {
 			    logging: false
 			})
-
+		default:
+			return state
 	}
 }

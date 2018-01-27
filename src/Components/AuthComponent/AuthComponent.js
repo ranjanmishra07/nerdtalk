@@ -6,6 +6,7 @@ import {hashHistory} from 'react-router'
 
 import {firebaseAuth, GithubProvider, GoogleProvider} from '../../firebaseConfig'
 
+import {connect} from 'react-redux'
 import {Link} from 'react-router'
 import {styles} from './styles'
 
@@ -23,6 +24,18 @@ class AuthComponent extends Component {
       })
       .catch(function(error) {
         console.log(error)
+      })
+    }
+
+    componentWillMount() {
+      var x = this
+      firebaseAuth.onAuthStateChanged(function(user) {
+        if(user){
+          console.log(user)
+          const {dispatch} = x.props
+          dispatch({type: 'SUCCESS_LOGIN', user})
+          hashHistory.push('/home')  
+        }
       })
     }
 
@@ -51,4 +64,13 @@ class AuthComponent extends Component {
   }
 }
 
-export default AuthComponent;
+function mapStateToProps(state) {
+  const {user} = state.userReducer
+
+  return {
+    user
+  }
+
+}
+
+export default connect(mapStateToProps)(AuthComponent);

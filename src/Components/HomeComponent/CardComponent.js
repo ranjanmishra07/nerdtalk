@@ -5,7 +5,7 @@ import FlatButton from 'material-ui/FlatButton';
 // import {client} from '../../Services/StreamService'
 
 const CardComponent = () => (
-  <Card>
+  <Card style={{marginBottom: 10, borderRadius: 0}}>
     <CardHeader
       title="Full Name"
       subtitle="Email"
