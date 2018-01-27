@@ -7,6 +7,8 @@ import { EditorState, convertToRaw, ContentState } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
+import Snackbar from 'material-ui/Snackbar';
+
 import {firebaseStorage} from '../../firebaseConfig'
 import axios from 'axios'
 import {connect} from 'react-redux'
@@ -18,10 +20,15 @@ class NewPostContainer extends Component {
     this.post = this.post.bind(this)
     this.mediaUpload = this.mediaUpload.bind(this)
     this.uploadFile = this.uploadFile.bind(this)
+    this.handleRequestClose = this.handleRequestClose.bind(this)
 
     this.state = {
       editorState: EditorState.createEmpty(),
-      mediaFile: null
+      mediaFile: null,
+      snackbar: {
+        open: false,
+        message: ""
+      }
     };
   }
 
@@ -46,6 +53,10 @@ class NewPostContainer extends Component {
     })
   }
 
+   handleRequestClose = () => {
+    this.setState({snackbar: {open:false, message: ""}});
+  };
+
   uploadFile(e) {
     var scope = this
     const file = e.target.files[0]
@@ -54,7 +65,7 @@ class NewPostContainer extends Component {
     
     firebaseStorage.child(this.props.user.uid + '/' + epochTime).put(file)
     .then(function(snapshot) {
-      scope.setState({uploading: false, mediaFile: null})
+      scope.setState({uploading: false, mediaFile: null, snackbar: {open: true, message: 'Posted Successfully'}})
       console.log(snapshot)
     })
     .catch(function(error) {
@@ -71,7 +82,6 @@ class NewPostContainer extends Component {
           toolbarClassName="toolbarClassName"
           wrapperClassName="rteWrapper"
           editorClassName="rteEditor"
-          editorStyle={{height: 100}}
           onEditorStateChange={this.onEditorStateChange}
           toolbar={{
               colorPicker: { className: 'hidden' },
@@ -90,9 +100,17 @@ class NewPostContainer extends Component {
 
           <input ref={input => this.inputElement = input} type="file" id="media-upload" onChange={this.uploadFile} className="hidden" accept="video/*,image/*"/>
 
-          <RaisedButton style={{float: 'right'}} primary={true} label="POST" onClick={this.post}/>
+          <RaisedButton style={{float: 'right'}} primary={true} label='POST' onClick={this.post}/>
         </CardActions>
       </Card>
+
+      <Snackbar
+          open={this.state.snackbar.open}
+          message={this.state.snackbar.message}
+          autoHideDuration={3000}
+          onRequestClose={this.handleRequestClose}
+          style={{left: '14%'}}
+        />
       </div>
     );
   }
