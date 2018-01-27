@@ -26,12 +26,27 @@
   right: 40px;
 }
 
+.rteEditor {
+  border-bottom: 1px solid #EEE;
+  padding: 5px;
+}
+
+.rteWrapper {
+}
+
+.hidden {
+  display: none;
+}
+
 @media (max-width: 920px) {
   .notificationsContainer {
     left: 40px;
     top: 270px;
     width: 30%;
-  }  
+  }
+  .feedContainer {
+    width: 55%;
+  }
 }
 
 @media (max-width: 480px) {
