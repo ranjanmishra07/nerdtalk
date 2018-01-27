@@ -16,7 +16,7 @@ class NotificationsContainer extends Component {
 
   render() {
     return (
-      <Paper className="flex-col" zDepth={2} style={{height: 400, borderRadius: 0, maxWidth: 20+'em'}}>
+      <Paper className="flex-col" zDepth={2} style={{height: 400, borderRadius: 0}}>
 
         <List style={{width: '100%', height: 400, overflowY: 'scroll'}}>
           <ListItem

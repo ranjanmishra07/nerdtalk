@@ -15,9 +15,23 @@
 
 .feedContainer {
   position: absolute;
-  width: 40em;
+  width: 40%;
   left: 350px;
+  right: 350px;
   margin: 0% 1%;
+}
+
+.notificationsContainer {
+  width: 25%;
+  right: 40px;
+}
+
+@media (max-width: 920px) {
+  .notificationsContainer {
+    left: 40px;
+    top: 270px;
+    width: 30%;
+  }  
 }
 
 @media (max-width: 480px) {

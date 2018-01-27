@@ -6,6 +6,7 @@ import {connect} from 'react-redux'
 import CardComponent from './CardComponent'
 import ProfileContainer from './ProfileContainer'
 import NotificationsContainer from './NotificationsContainer'
+import NewPostContainer from './NewPostContainer'
 
 class HomeComponent extends Component {
   constructor(props) {
@@ -27,17 +28,20 @@ class HomeComponent extends Component {
   render() {
     return (
       <div className='flex-row' style={{margin: 1+"%", justifyContent: 'flex-start'}}>
-        <div style={{width: 20+'em', position: 'fixed', left: 40}} className="mobile-hide">
+        
+        <div style={{width: '30%', position: 'fixed', left: 40}} className="mobile-hide">
           <ProfileContainer />
         </div>
-
+        
         <div className='feedContainer'>
+          <NewPostContainer />
+
           <CardComponent />
 
           <CardComponent />
         </div>
 
-        <div style={{width: 20+'em', position: 'fixed', right: 40}} className="mobile-hide">
+        <div style={{position: 'fixed'}} className="mobile-hide notificationsContainer">
           <NotificationsContainer />
         </div>
 
