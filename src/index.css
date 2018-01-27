@@ -2,7 +2,14 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-   background:linear-gradient(141deg, #b8d7e0 0%, #0cb7e0 51%, #23657d 75%) center fixed ;
+  background:linear-gradient(141deg, #b8d7e0 0%, #0cb7e0 51%, #23657d 75%) center fixed ;
   background-size: cover;
 }
 
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #494A4A;
+}
