@@ -15,11 +15,17 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from django.contrib.auth import views
-
+from django.contrib.auth import views as auth_views
+from newsfeed import views as newsfeed_views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^account/login/$', views.login, name="login"),
+    url(r'^accounts/login/$', auth_views.login, name="login"),
     #url(r'', include('newsfeed.urls')),
-    url(r'^accounts/logout/$', views.logout, name='logout', kwargs={'next_page': '/'}),
+    url(r'^$',newsfeed_views.home, name="home"),
+    url(r'^oauth/', include('social_django.urls', namespace='social')),
+    url(r'^accounts/logout/$', auth_views.logout, name='logout', kwargs={'next_page': '/'}),
 ]
+
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+LOGIN_REDIRECT_URL = 'home'
