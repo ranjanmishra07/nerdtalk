@@ -17,8 +17,10 @@ class HomeComponent extends Component {
     var scope = this;
     firebaseAuth.onAuthStateChanged(function(user) {
       if(user) {
+        var token = user.getToken()
         const {dispatch} = scope.props
         dispatch({type: 'SUCCESS_LOGIN', user})
+        dispatch({type: 'TOKEN', token})
       }
       else
         hashHistory.push('/auth')
