@@ -44,12 +44,27 @@ class NewPostContainer extends Component {
 
   post() {
     // alert(draftToHtml(convertToRaw(this.state.editorState.getCurrentContent())))
+    let token = this.props.token
 
-    axios.get('https://sq6ptonjpk.execute-api.ap-south-1.amazonaws.com/test/testHello', {
-        headers: {'Authorization': 'erer'}
+    axios({
+      method: 'post',
+      url: 'https://sq6ptonjpk.execute-api.ap-south-1.amazonaws.com/test/feed',
+      headers: { 'Authorization': 'sdf'},
+      params: { mode: '1', user: 'bhawesh' },
+      data: JSON.stringify({
+        "actor": "rakshit",
+        "verb": "tweet",
+        "object": "dcfwf",
+        "time": "123123123123",
+        "foreign_id": "wefwefewfw",
+        "to":["notification:bhawesh"]
+      })
     })
     .then(function(resp) {
       console.log(resp)
+    })
+    .catch(function(err) {
+      console.log(err)
     })
   }
 
@@ -117,9 +132,10 @@ class NewPostContainer extends Component {
 }
 
 function mapStateToProps(state) {
-  const {user} = state.userReducer
+  const {user, token} = state.userReducer
   return {
-    user
+    user,
+    token
   }
 }
 

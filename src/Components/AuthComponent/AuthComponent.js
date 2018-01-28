@@ -28,11 +28,10 @@ class AuthComponent extends Component {
     }
 
     componentWillMount() {
-      var x = this
+      var scope = this
       firebaseAuth.onAuthStateChanged(function(user) {
         if(user){
-          console.log(user)
-          const {dispatch} = x.props
+          const {dispatch} = scope.props
           dispatch({type: 'SUCCESS_LOGIN', user})
           hashHistory.push('/home')  
         }

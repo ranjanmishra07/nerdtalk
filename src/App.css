@@ -29,6 +29,7 @@
 .rteEditor {
   border-bottom: 1px solid #EEE;
   padding: 5px;
+  max-height: 150px;
 }
 
 .rteWrapper {

@@ -15,6 +15,10 @@ export function userReducer(state=initialState, action) {
 			return Object.assign({}, state, {
 			    logging: false
 			})
+		case "TOKEN":
+			return Object.assign({}, state, {
+			    token: action.token
+			})
 		default:
 			return state
 	}
