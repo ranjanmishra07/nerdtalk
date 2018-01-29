@@ -12,8 +12,8 @@ module.exports = app => {
   '/auth/google/callback',
   passport.authenticate('google'),
   (req, res) => {
-    // res.redirect('/surveys');
-    res.json(req.user);
+    res.redirect('/news');
+    // res.json(req.user);
   }
 );
 
@@ -28,9 +28,19 @@ app.get(
 '/auth/github/callback',
 passport.authenticate('github'),
 (req, res) => {
-  // res.redirect('/surveys');
-  res.json(req.user);
+  res.redirect('/news');
+  // res.json(req.user);
 }
 );
 
-}
+app.get('/api/logout', (req, res) => {
+   req.logout();
+   res.redirect('/');
+ });
+
+ app.get('/api/current_user', (req, res) => {
+   res.send(req.user);
+ });
+
+
+}//  module.exports ending curly brace
